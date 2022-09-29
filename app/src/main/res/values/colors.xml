@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="color_error">#FFBB86FC</color>
+    <color name="color_black_900_alpha_7">#000000</color>
+    <color name="overlay_blue">#0000FF</color>
+    <color name="overlay_red_alpha_12">#FF0000</color>
+    <color name="overlay_green">#00FF00</color>
+    <color name="overlay_violet">#EE82EE</color>
+    <color name="overlay_yellow">#FFFF00</color>
+    <color name="on_primary">#00BFFF</color>
+
+    <color name="splashScreenColor">#C2D4D4</color>
+</resources>

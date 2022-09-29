@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tutor</string>
+    <string name="tutor_logo_holder">Tutor Logo Holder</string>
+    <string name="finals">Finals</string>
+    <string name="finals_practice">Finals Practice</string>
+    <string name="mock_practice">Mock Practice</string>
+    <string name="mock">Mock</string>
+</resources>
