@@ -19,4 +19,13 @@
         <item name="windowSplashScreenIconBackgroundColor">@color/teal_200</item>
         <item name="postSplashScreenTheme">@style/Theme.Tutor</item>
     </style>
+
+    <style name="Theme.Tutor.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Tutor.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Tutor.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

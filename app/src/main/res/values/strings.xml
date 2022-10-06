@@ -5,4 +5,22 @@
     <string name="finals_practice">Finals Practice</string>
     <string name="mock_practice">Mock Practice</string>
     <string name="mock">Mock</string>
+    <string name="title_activity_nav_drawer_screen">NavDrawerScreen</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_about_us">About Us</string>
+    <string name="action_feedback">Feedback</string>
+    <string name="action_share">Share</string>
+
+    <!--Nav Drawer Elements-->
+    <string name="menu_home">Home</string>
+    <string name="menu_category">Category</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="play">Play</string>
+    <string name="communication">Communication</string>
 </resources>

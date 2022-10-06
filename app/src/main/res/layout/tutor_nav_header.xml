@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="bottom"
+    android:background="@color/purple_200"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="220dp">
 
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:layout_width="407dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="159dp"
         android:src="@drawable/tutor_logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/tutor_logo_holder" />
+        tools:layout_editor_absoluteY="167dp"
+        android:contentDescription="@string/app_name" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_header_title"
+        android:textStyle="bold"
+        android:textColor="#311B92"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="39dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_header_subtitle"
+        android:textColor="#311B92" />
+
+</LinearLayout>
