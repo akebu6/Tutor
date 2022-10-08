@@ -14,6 +14,7 @@
     <color name="overlay_violet">#EE82EE</color>
     <color name="overlay_yellow">#FFFF00</color>
     <color name="on_primary">#00BFFF</color>
+    <color name="green">#2AF598</color>
 
     <color name="splashScreenColor">#C2D4D4</color>
 </resources>

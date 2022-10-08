@@ -13,10 +13,4 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-
-    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/purple_200</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/teal_200</item>
-        <item name="postSplashScreenTheme">@style/Theme.Tutor</item>
-    </style>
 </resources>
