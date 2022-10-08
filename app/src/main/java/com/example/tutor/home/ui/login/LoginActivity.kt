@@ -1,6 +1,7 @@
 package com.example.tutor.home.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tutor.R
 import com.example.tutor.databinding.ActivityLoginBinding
+import com.example.tutor.home.ui.signup.SignupActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -27,10 +29,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val username = binding.username
+        val username = binding.email
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
+        val signup = binding.signUp
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())[LoginViewModel::class.java]
 
@@ -100,6 +103,11 @@ class LoginActivity : AppCompatActivity() {
                 loading?.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+
+            signup?.setOnClickListener {
+                val intent = Intent(this@LoginActivity, SignupActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -128,11 +136,8 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
             afterTextChanged.invoke(editable.toString())
         }
 
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-        }
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
-        }
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
     })
 }
