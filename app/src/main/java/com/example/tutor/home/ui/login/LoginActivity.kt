@@ -1,18 +1,22 @@
 package com.example.tutor.home.ui.login
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.tutor.MainActivity
 import com.example.tutor.R
 import com.example.tutor.databinding.ActivityLoginBinding
 import com.example.tutor.home.ui.signup.SignupActivity
@@ -21,6 +25,8 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var progressBar: Dialog
+    private lateinit var dialogText: TextView
 
     @Suppress("LongMethod")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +34,16 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        progressBar = Dialog(this)
+        progressBar.setContentView(R.layout.layout_dialog)
+        progressBar.setCancelable(false)
+        progressBar.window?.setLayout(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialogText = progressBar.findViewById(R.id.dialog_text)
+        dialogText.text = (getString(R.string.logging_in))
 
         val username = binding.email
         val password = binding.password
@@ -102,6 +118,9 @@ class LoginActivity : AppCompatActivity() {
             login.setOnClickListener {
                 loading?.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
             signup?.setOnClickListener {

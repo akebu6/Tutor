@@ -24,24 +24,131 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="388dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="14dp"
             android:background="#00008577"
-            android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_menu"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toTopOf="@+id/gridLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mock_practice_card"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="33dp"
+                android:translationZ="3dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="11dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:layout_width="137dp"
+                    android:layout_height="248dp"
+                    android:contentDescription="@string/mock_practice"
+                    android:src="@drawable/mpractice" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mock_card"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="33dp"
+                android:translationZ="3dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="11dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:layout_width="133dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/mock_practice"
+                    android:src="@drawable/mock" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/final_practice_card"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="33dp"
+                android:translationZ="3dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="11dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:layout_width="134dp"
+                    android:layout_height="254dp"
+                    android:contentDescription="@string/mock_practice"
+                    android:src="@drawable/fpractice" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exam_card"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="33dp"
+                android:translationZ="3dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="11dp"
+                app:cardUseCompatPadding="true">
+
+                <ImageView
+                    android:layout_width="137dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/mock_practice"
+                    android:src="@drawable/exam" />
+
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
-            android:layout_width="422dp"
-            android:layout_height="59dp"
+            android:layout_width="398dp"
+            android:layout_height="60dp"
             android:background="?android:attr/windowBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            app:layout_constraintVertical_bias="1.0"
             app:menu="@menu/bottom_menu">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>

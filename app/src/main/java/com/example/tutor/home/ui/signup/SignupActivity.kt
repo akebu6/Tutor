@@ -1,11 +1,14 @@
 package com.example.tutor.home.ui.signup
 
+import android.app.Dialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -28,6 +31,8 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var passwordString: String
     private lateinit var confirmPasswordString: String
     private lateinit var fullnameString: String
+    private lateinit var progressBar: Dialog
+    private lateinit var dialogText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +47,16 @@ class SignupActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        progressBar = Dialog(this)
+        progressBar.setContentView(R.layout.layout_dialog)
+        progressBar.setCancelable(false)
+        progressBar.window?.setLayout(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialogText = progressBar.findViewById(R.id.dialog_text)
+        dialogText.text = getString(R.string.creating_account)
+
         // initializing the views
         fullname = findViewById(R.id.name)
         email = findViewById(R.id.email)
@@ -50,6 +65,8 @@ class SignupActivity : AppCompatActivity() {
         signupButton = findViewById(R.id.signup)
 
         signupButton.setOnClickListener {
+            progressBar.show()
+
             emailString = email.text.toString()
             passwordString = password.text.toString()
             confirmPasswordString = confirmPassword.text.toString()
@@ -64,12 +81,14 @@ class SignupActivity : AppCompatActivity() {
                                 baseContext, "Authentication successful.",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            progressBar.dismiss()
                             val user = auth.currentUser
                             updateUI(user)
                             val intent = Intent(this@SignupActivity, MainActivity::class.java)
                             startActivity(intent)
                         } else {
                             // If sign in fails, display a message to the user.
+                            progressBar.dismiss()
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(
                                 baseContext, "Authentication failed.",

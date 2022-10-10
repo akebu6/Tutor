@@ -62,4 +62,22 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="full_name">Full name</string>
+    <string name="creating_account">Creating Account</string>
+    <string name="logging_in">Logging in</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="google_logo">google_logo</string>
+    <string name="french">FRENCH</string>
+    <string name="english">ENGLISH</string>
+    <string name="math">MATH</string>
+    <string name="local_language">LOCAL LANGUAGE</string>
+    <string name="chinese">CHINESE</string>
+    <string name="music_and_art"><![CDATA[MUSIC & ART]]></string>
+    <string name="physical_ed">PHYSICAL ED</string>
+    <string name="home_econ">HOME ECONOMICS</string>
+    <string name="religious_studies">RELIGIOUS STUDIES</string>
+    <string name="ict">COMPUTER STUDIES</string>
+    <string name="agri_science">AGRICULTURAL SCIENCE</string>
+    <string name="science">INTEGRATED SCIENCE</string>
+    <string name="business_studies">BUSINESS STUDIES</string>
+    <string name="social_studies">SOCIAL STUDIES</string>
 </resources>
