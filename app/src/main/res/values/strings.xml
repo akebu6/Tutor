@@ -18,7 +18,7 @@
 
     <!--Nav Drawer Elements-->
     <string name="menu_home">Home</string>
-    <string name="menu_category">Category</string>
+    <string name="menu_category">Scoreboard</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="how_to_play">How to Play</string>
     <string name="play">Play</string>
@@ -66,18 +66,22 @@
     <string name="logging_in">Logging in</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="google_logo">google_logo</string>
-    <string name="french">FRENCH</string>
-    <string name="english">ENGLISH</string>
-    <string name="math">MATH</string>
-    <string name="local_language">LOCAL LANGUAGE</string>
-    <string name="chinese">CHINESE</string>
-    <string name="music_and_art"><![CDATA[MUSIC & ART]]></string>
-    <string name="physical_ed">PHYSICAL ED</string>
-    <string name="home_econ">HOME ECONOMICS</string>
-    <string name="religious_studies">RELIGIOUS STUDIES</string>
-    <string name="ict">COMPUTER STUDIES</string>
-    <string name="agri_science">AGRICULTURAL SCIENCE</string>
-    <string name="science">INTEGRATED SCIENCE</string>
-    <string name="business_studies">BUSINESS STUDIES</string>
-    <string name="social_studies">SOCIAL STUDIES</string>
+    <string name="clear_selection">Clear Selection</string>
+    <string name="mark_for_review">Review</string>
+    <string name="start_quiz">Start Quiz</string>
+    <string name="questions">Questions</string>
+    <string name="best_score">Best Score</string>
+    <string name="time">Time</string>
+    <string name="_5">5</string>
+    <string name="_25_mins">25 mins</string>
+    <string name="score_0">Score: 0</string>
+    <string name="icon">icon</string>
+    <string name="option_a">Option A</string>
+    <string name="question_no_1">Question No. 1</string>
+    <string name="option_d">Option D</string>
+    <string name="option_c">Option C</string>
+    <string name="option_b">Option B</string>
+    <string name="_1_20">1/20</string>
+    <string name="_30_00min">30:00min</string>
+    <string name="submit">Submit</string>
 </resources>
