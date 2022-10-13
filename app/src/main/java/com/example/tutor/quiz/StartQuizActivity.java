@@ -1,6 +1,7 @@
 package com.example.tutor.quiz;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.tutor.database.DatabaseQuery.loadQuestions;
+import static com.example.tutor.database.DatabaseQuery.mCategoryViewModelList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +9,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tutor.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.tutor.R;
+import com.example.tutor.database.DatabaseQuery;
+import com.example.tutor.database.OnCompleteListener;
 
 public class StartQuizActivity extends AppCompatActivity {
     Button startQuizButton;
-    TextView quizTime, bestScore, numberOfQuestions;
+    TextView quizTime, bestScore, numberOfQuestions, categoryName;
     ImageView backButton;
 
     @Override
@@ -22,13 +26,29 @@ public class StartQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_quiz);
 
         initialiseVariables();
+
+        loadQuestions(new OnCompleteListener() {
+            @Override
+            public void onSuccess() {
+                setData();
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 
     public void setData() {
-
+        categoryName.setText(mCategoryViewModelList.get(DatabaseQuery.selectedItemIndex).getName());
+        numberOfQuestions.setText(String.valueOf(DatabaseQuery.questionsList.size()));
+//        bestScore.setText(String.valueOf(DatabaseQuery.quizList.get(DatabaseQuery.selectedItemIndex).getTopScore));
+//        quizTime.setText(String.valueOf(DatabaseQuery.quizList.get(DatabaseQuery.selectedItemIndex).getTime()));
     }
 
     private void initialiseVariables() {
+        categoryName = findViewById(R.id.subjectName);
         startQuizButton = findViewById(R.id.startQuizButton);
         backButton = findViewById(R.id.back_button);
         quizTime = findViewById(R.id.quiz_time);
@@ -41,10 +61,6 @@ public class StartQuizActivity extends AppCompatActivity {
             finish();
         });
 
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(StartQuizActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        backButton.setOnClickListener(v -> StartQuizActivity.this.finish());
     }
 }

@@ -9,12 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.example.tutor.database.OnCompleteListener;
 import com.example.tutor.R;
 import com.example.tutor.database.DatabaseQuery;
-import com.example.tutor.database.OnCompleteListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryFragment extends Fragment {
     private GridView mGridView;
@@ -33,8 +30,8 @@ public class CategoryFragment extends Fragment {
        DatabaseQuery.loadCategories(new OnCompleteListener() {
               @Override
               public void onSuccess() {
-                CategoryAdapter categoryAdapter = new CategoryAdapter();
-                mGridView.setAdapter(categoryAdapter);
+//                CategoryAdapter categoryAdapter = new CategoryAdapter();
+//                mGridView.setAdapter(categoryAdapter);
               }
 
               @Override
@@ -42,10 +39,6 @@ public class CategoryFragment extends Fragment {
 
               }
          });
-       });
-
-       CategoryAdapter categoryAdapter = new CategoryAdapter(DatabaseQuery);
-       mGridView.setAdapter(categoryAdapter);
 
        return view;
     }

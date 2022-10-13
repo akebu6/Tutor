@@ -19,7 +19,6 @@
     <!--Nav Drawer Elements-->
     <string name="menu_home">Home</string>
     <string name="menu_category">Scoreboard</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="how_to_play">How to Play</string>
     <string name="play">Play</string>
     <string name="communication">Communication</string>
@@ -43,6 +42,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="category_name">Category Name</string>
+    <string name="score_board">Scoreboard</string>
     <string name="number_of_quizzes">Number of Quizzes</string>
     <string name="notifications">notifications</string>
     <string name="grade_9">Grade - 9</string>

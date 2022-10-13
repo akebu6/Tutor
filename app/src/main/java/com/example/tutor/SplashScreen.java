@@ -10,8 +10,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.example.tutor.database.DatabaseQuery;
 import com.example.tutor.database.OnCompleteListener;
+import com.example.tutor.database.DatabaseQuery;
+import com.example.tutor.login.ui.login.LoginActivity;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_SCREEN = 5000;
@@ -43,7 +44,7 @@ public class SplashScreen extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }

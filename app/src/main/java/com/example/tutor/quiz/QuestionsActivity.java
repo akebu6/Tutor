@@ -1,16 +1,16 @@
 package com.example.tutor.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.tutor.R;
-import com.example.tutor.ui.category.CategoryAdapter;
+import com.example.tutor.database.DatabaseQuery;
 
 public class QuestionsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -25,10 +25,11 @@ public class QuestionsActivity extends AppCompatActivity {
 
         initialseVariables();
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter();
-        recyclerView.setAdapter(categoryAdapter);
-
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        QuestionsAdapter adapter = new QuestionsAdapter(DatabaseQuery.questionsList);
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
 
     }
 
