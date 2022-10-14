@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutor.MainActivity;
 import com.example.tutor.R;
+import com.example.tutor.database.DatabaseQuery;
+import com.example.tutor.database.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignupActivity extends AppCompatActivity {
@@ -46,17 +48,14 @@ public class SignupActivity extends AppCompatActivity {
                         "Empty Credentials",
                         Toast.LENGTH_SHORT)
                         .show();
-            }else if (txt_password.length() < 6){
+            } else if (txt_password.length() < 6){
                 Toast.makeText(
                         SignupActivity.this,
                         "Password is too short",
                         Toast.LENGTH_SHORT)
                         .show();
-            }else {
+            } else {
                 registerUser(txt_email, txt_password);
-                Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
     }
@@ -71,13 +70,22 @@ public class SignupActivity extends AppCompatActivity {
                                 "User registration successful!",
                                 Toast.LENGTH_SHORT)
                                 .show();
-                        startActivity(new Intent(SignupActivity.this, MainActivity.class));
-                        finish();
-                    }else {
-                        Toast.makeText(
-                                SignupActivity.this,
-                                "Registration failed!", Toast.LENGTH_SHORT)
-                                .show();
+//                        DatabaseQuery.loadCategories(new OnCompleteListener() {
+//                            @Override
+//                            public void onSuccess() {
+//                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+//                                finish();
+//                            }
+//
+//                            @Override
+//                            public void onFailure() {
+//                                Toast.makeText(
+//                                                SignupActivity.this,
+//                                                "Registration failed!", Toast.LENGTH_SHORT)
+//                                        .show();
+//                            }
+//
+//                        });
                     }
                 });
     }

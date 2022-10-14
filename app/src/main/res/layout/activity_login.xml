@@ -68,7 +68,6 @@
         android:layout_gravity="start"
         android:layout_marginTop="-20dp"
         android:layout_marginBottom="10dp"
-        android:enabled="false"
         android:text="@string/action_sign_in"
         app:layout_constraintBottom_toTopOf="@+id/dont_have_account"
         app:layout_constraintEnd_toEndOf="parent"

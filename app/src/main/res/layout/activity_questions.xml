@@ -1,154 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tutor.quiz.QuestionsActivity">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/top_layout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/overlay_blue"
-        android:elevation="5dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/num_of_questions"
+        <ImageView
+            android:id="@+id/previous_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_1_20"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="16dp"/>
-
-        <TextView
-            android:id="@+id/time_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_30_00min"
-            android:layout_weight="1"
-            android:textColor="@color/green"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:src="@drawable/ic_arrow_back" />
 
         <Button
             android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@drawable/border_button"
-            android:backgroundTint="@android:color/holo_blue_bright"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:text="@string/submit"
-            android:textColor="@color/white" />
+            android:layout_marginLeft="223dp"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/middle_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/green"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_layout">
-
-        <TextView
-            android:id="@+id/subject_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="English"
-            android:textColor="#795548"
-            android:textSize="15sp" />
-
-        <ImageView
-            android:id="@+id/bookmark"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_bookmark"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:id="@+id/menu"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_menu"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottom_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        android:gravity="center"
-        android:background="@color/overlay_blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageButton
-            android:id="@+id/previous_button"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="24dp"
-            android:minHeight="48dp"
-            android:src="@drawable/ic_arrow_back"
-            tools:ignore="RtlHardcoded" />
-
-        <Button
-            android:id="@+id/clear_selection_button"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="@drawable/border_button"
-            android:text="@string/clear_selection"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/review"
-            android:layout_width="88dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/border_button"
-            android:text="@string/mark_for_review"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            tools:ignore="RtlHardcoded" />
-
-        <ImageButton
-            android:id="@+id/next_button"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="40dp"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward"
-            tools:ignore="RtlHardcoded" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/question_recycler_view"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/middle_layout"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_layout" />
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:textColor="@color/color_black_900_alpha_7"
+        android:textSize="18sp"
+        android:text="@string/question_no_1"
+        android:textStyle="bold"
+        android:scrollbars="vertical"
+        android:background="@color/white"
+        android:inputType="textMultiLine"
+        android:elevation="5dp"
+        android:translationZ="3dp"
+        android:layout_weight="1"
+        tools:ignore="TextViewEdits" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/total_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_questions"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/option_A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColor="@color/color_black_900_alpha_7"
+        android:text="@string/option_a"
+        android:textSize="16sp"
+        android:background="@drawable/unselected_button"
+        android:elevation="3dp"
+        android:stateListAnimator="@null"/>
+
+    <Button
+        android:id="@+id/option_B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColor="@color/color_black_900_alpha_7"
+        android:text="@string/option_b"
+        android:textSize="16sp"
+        android:background="@drawable/unselected_button"
+        android:elevation="3dp"
+        android:stateListAnimator="@null"/>
+
+    <Button
+        android:id="@+id/option_C"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColor="@color/color_black_900_alpha_7"
+        android:text="@string/option_c"
+        android:textSize="16sp"
+        android:background="@drawable/unselected_button"
+        android:elevation="3dp"
+        android:stateListAnimator="@null"/>
+
+    <Button
+        android:id="@+id/option_D"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textColor="@color/color_black_900_alpha_7"
+        android:text="@string/option_d"
+        android:textSize="16sp"
+        android:background="@drawable/unselected_button"
+        android:elevation="3dp"
+        android:stateListAnimator="@null"/>
+
+</LinearLayout>
