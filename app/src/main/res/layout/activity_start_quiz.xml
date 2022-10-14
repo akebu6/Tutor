@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background"
+    android:background="@drawable/back2"
     tools:context="com.example.tutor.quiz.StartQuizActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -30,7 +30,7 @@
         android:layout_marginEnd="16dp"
         android:padding="10dp"
         android:textAlignment="center"
-        android:textColor="#5E35B1"
+        android:textColor="@color/white2"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,8 +45,9 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="140dp"
         android:text="@string/score_0"
+        android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="#311B92"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/questions"
+                    android:textColor="@color/blue"
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textSize="18sp"
@@ -103,6 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_5"
+                    android:textColor="@color/blue"
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
@@ -139,6 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/best_score"
+                    android:textColor="@color/blue"
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textSize="18sp"
@@ -152,6 +156,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:text="@string/_5"
+                    android:textColor="@color/blue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -186,6 +191,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/time"
+                    android:textColor="@color/blue"
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textSize="18sp"
@@ -197,6 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_25_mins"
+                    android:textColor="@color/blue"
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
@@ -207,7 +214,7 @@
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/startQuizButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -217,7 +224,7 @@
         android:text="@string/start_quiz"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:background="@drawable/border_button"
+        android:background="@drawable/custom_btn"
         android:textSize="16sp"
         android:elevation="5dp"
         android:translationZ="3dp"
@@ -234,7 +241,7 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/icon"
         android:padding="8dp"
-        android:src="@drawable/ic_arrow_back"
+        android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck" />
