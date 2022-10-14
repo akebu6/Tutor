@@ -6,7 +6,9 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,11 +36,22 @@ public class MainActivity extends AppCompatActivity
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Toolbar toolBar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolBar);
+
         frameLayout = findViewById(R.id.main_frame);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         navigationView.setNavigationItemSelectedListener(this);
+
+        new ActionBarDrawerToggle(
+                this,
+                drawer,
+                toolBar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        ).syncState();
 
         new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_score_board, R.id.my_account)
@@ -52,6 +65,7 @@ public class MainActivity extends AppCompatActivity
 
         setUpNavLogic();
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
