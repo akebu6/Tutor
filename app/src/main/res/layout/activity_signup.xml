@@ -133,7 +133,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/log_in"
+                android:id="@+id/sign_up"
                 android:layout_width="290dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="28dp"

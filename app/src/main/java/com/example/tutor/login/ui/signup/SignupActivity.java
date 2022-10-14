@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutor.MainActivity;
 import com.example.tutor.R;
-import com.example.tutor.database.DatabaseQuery;
-import com.example.tutor.database.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignupActivity extends AppCompatActivity {
@@ -31,7 +29,7 @@ public class SignupActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         confirmPassword = findViewById(R.id.confirm_password);
-        signup = findViewById(R.id.log_in);
+        signup = findViewById(R.id.sign_up);
         back = findViewById(R.id.back);
 
         back.setOnClickListener(v -> finish());
@@ -42,7 +40,7 @@ public class SignupActivity extends AppCompatActivity {
             String txt_email = email.getText().toString();
             String txt_password = password.getText().toString();
 
-            if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
+            if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                 Toast.makeText(
                         SignupActivity.this,
                         "Empty Credentials",
@@ -70,23 +68,10 @@ public class SignupActivity extends AppCompatActivity {
                                 "User registration successful!",
                                 Toast.LENGTH_SHORT)
                                 .show();
-//                        DatabaseQuery.loadCategories(new OnCompleteListener() {
-//                            @Override
-//                            public void onSuccess() {
-//                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
-//                                finish();
-//                            }
-//
-//                            @Override
-//                            public void onFailure() {
-//                                Toast.makeText(
-//                                                SignupActivity.this,
-//                                                "Registration failed!", Toast.LENGTH_SHORT)
-//                                        .show();
-//                            }
-//
-//                        });
                     }
+                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 });
     }
 }

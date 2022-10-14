@@ -37,10 +37,6 @@ public class SplashScreen extends AppCompatActivity {
         image = findViewById(R.id.logo);
 
         image.setAnimation(topAnim);
-
-        DatabaseQuery.loadCategories(new OnCompleteListener() {
-            @Override
-            public void onSuccess() {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -50,12 +46,4 @@ public class SplashScreen extends AppCompatActivity {
                     }
                 }, SPLASH_SCREEN);
             }
-
-            @Override
-            public void onFailure() {
-
-            }
-        });
-
-    }
 }
