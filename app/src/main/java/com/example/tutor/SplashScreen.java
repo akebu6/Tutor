@@ -37,13 +37,13 @@ public class SplashScreen extends AppCompatActivity {
         image = findViewById(R.id.logo);
 
         image.setAnimation(topAnim);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, SPLASH_SCREEN);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
+        }, SPLASH_SCREEN);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.tutor.quiz;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,12 +29,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        initialiazeVariables();
+        initializeVariables();
         loadNewQuestions();
 
     }
 
-    private void loadNewQuestions() {
+    public void loadNewQuestions() {
         if (questionIndex == currentQuestion) {
             finishQuiz();
             return;
@@ -46,7 +47,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         optionD.setText(Questions.choices[questionIndex][3]);
     }
 
-    private void finishQuiz() {
+    public void finishQuiz() {
         String quizStatus;
         if (score >= currentQuestion * 0.60) {
             quizStatus = "Excellent";
@@ -56,19 +57,19 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
         new AlertDialog.Builder(this)
                 .setTitle(quizStatus)
-                .setMessage("Your Score: " + score + "out of " + currentQuestion)
-                .setPositiveButton("Restart", (dialog, which) -> restart())
+                .setMessage("Your Score: " + score + " out of " + currentQuestion)
+                .setPositiveButton("Restart", (dialogInterface, i) -> restart())
                 .setCancelable(false)
                 .show();
     }
 
-    private void restart() {
+    public void restart() {
         score = 0;
         questionIndex = 0;
         loadNewQuestions();
     }
 
-    public void initialiazeVariables() {
+    public void initializeVariables() {
         submitButton = findViewById(R.id.submit);
         prevButton = findViewById(R.id.previous_button);
         optionA = findViewById(R.id.option_A);
@@ -78,32 +79,26 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         questions = findViewById(R.id.question);
         totalQuestions = findViewById(R.id.total_questions);
 
-        submitButton.setOnClickListener (v -> {
-            if (selectedOption.isEmpty()) {
-                return;
-            }
-            if (selectedOption.equals(Questions.correctAnswers[questionIndex])) {
-                score++;
-            }
-
-            selectedOption = "";
-            questionIndex++;
-            loadNewQuestions();
-        });
         prevButton.setOnClickListener(v -> {
             Intent intent = new Intent(QuestionsActivity.this, MainActivity.class);
             startActivity(intent);
         });
+
+        submitButton.setOnClickListener(this);
+        optionA.setOnClickListener(this);
+        optionB.setOnClickListener(this);
+        optionC.setOnClickListener(this);
+        optionD.setOnClickListener(this);
 
         totalQuestions.setText("Total Questions: " + currentQuestion);
 
     }
 
     public void onClick(View view) {
-        optionA.setBackgroundResource(R.color.white);
-        optionB.setBackgroundResource(R.color.white);
-        optionC.setBackgroundResource(R.color.white);
-        optionD.setBackgroundResource(R.color.white);
+        optionA.setBackgroundColor(Color.BLUE);
+        optionB.setBackgroundColor(Color.BLUE);
+        optionC.setBackgroundColor(Color.BLUE);
+        optionD.setBackgroundColor(Color.BLUE);
 
         Button clickedButton = (Button) view;
 
@@ -111,7 +106,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             if (selectedOption.equals(Questions.correctAnswers[questionIndex])) {
                 score++;
             }
-            currentQuestion++;
+            questionIndex++;
             loadNewQuestions();
 
         } else {
