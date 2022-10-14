@@ -29,7 +29,7 @@ public class SignupActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         confirmPassword = findViewById(R.id.confirm_password);
-        signup = findViewById(R.id.signup);
+        signup = findViewById(R.id.log_in);
         back = findViewById(R.id.back);
 
         back.setOnClickListener(v -> finish());
