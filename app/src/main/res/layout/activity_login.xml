@@ -44,7 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.476" />
-
+                
             <TextView
                 android:id="@+id/signup_textv"
                 android:layout_width="wrap_content"

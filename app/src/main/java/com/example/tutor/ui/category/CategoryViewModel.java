@@ -1,8 +1,8 @@
 package com.example.tutor.ui.category;
 
 public class CategoryViewModel {
-    String name;
-    String documentID;
+    private String documentID;
+    private String name;
 
     public CategoryViewModel(String documentID, String name) {
         this.documentID = documentID;

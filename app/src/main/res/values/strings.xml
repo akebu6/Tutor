@@ -84,4 +84,6 @@
     <string name="_1_20">1/20</string>
     <string name="_30_00min">30:00min</string>
     <string name="submit">Submit</string>
+    <string name="coming_soon">COMING SOON....</string>
+    <string name="total_questions">Total Questions</string>
 </resources>

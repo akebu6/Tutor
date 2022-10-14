@@ -2,38 +2,30 @@ package com.example.tutor;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.tutor.databinding.ActivityMainBinding;
+import com.example.tutor.ui.account.AccountFragment;
 import com.example.tutor.ui.category.CategoryFragment;
+import com.example.tutor.ui.scoreboard.ScoreBoardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    FrameLayout frameLayout;
+    CategoryFragment categoryFragment = new CategoryFragment();
+
+    BottomNavigationView bottomNavigationView;
 
     private ActivityMainBinding binding;
-    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    setFragments(new CategoryFragment());
-                    return true;
-                case R.id.nav_score_board:
-                    return true;
-                case R.id.my_account:
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,30 +34,33 @@ public class MainActivity extends AppCompatActivity
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        frameLayout = findViewById(R.id.main_frame);
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         navigationView.setNavigationItemSelectedListener(this);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
 
-        setFragments(new CategoryFragment());
-    }
+        new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_score_board, R.id.my_account)
+                .setOpenableLayout(drawer)
+                .build();
 
-    private void setFragments(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_frame, categoryFragment)
+                .commit();
+
+        setUpNavLogic();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_score_board) {
+        } else if (id == R.id.nav_feedback) {
 
-        } else if (id == R.id.my_account) {
+        } else if (id == R.id.nav_about) {
 
         }
         return false;
@@ -79,5 +74,43 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void setUpNavLogic() {
+        AccountFragment accountFragment = new AccountFragment();
+        ScoreBoardFragment scoreBoardFragment = new ScoreBoardFragment();
+
+        bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_frame, categoryFragment)
+                                .commit();
+                        Toast.makeText(MainActivity.this, "Nav Fragment", Toast.LENGTH_SHORT).show();
+                        return true;
+
+                    case R.id.nav_score_board:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_frame, scoreBoardFragment)
+                                .commit();
+                        Toast.makeText(MainActivity.this, "Score Fragment", Toast.LENGTH_SHORT).show();
+                        return true;
+
+                    case R.id.my_account:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_frame, accountFragment)
+                                .commit();
+                        Toast.makeText(MainActivity.this, "Account Fragment", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 }
