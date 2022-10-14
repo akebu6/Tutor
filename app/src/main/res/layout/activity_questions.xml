@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white2"
     android:orientation="vertical">
 
     <LinearLayout
@@ -23,6 +24,9 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/submit"
+            android:textColor="@color/white2"
+            android:textStyle="bold"
+            android:backgroundTint="@color/blue"
             android:layout_marginLeft="223dp"/>
 
     </LinearLayout>
@@ -32,18 +36,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textColor="@color/color_black_900_alpha_7"
-        android:textSize="18sp"
-        android:text="@string/question_no_1"
-        android:textStyle="bold"
-        android:scrollbars="vertical"
-        android:background="@color/white"
-        android:inputType="textMultiLine"
-        android:elevation="5dp"
-        android:translationZ="3dp"
         android:layout_weight="1"
+        android:background="@color/white2"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:inputType="textMultiLine"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:text="@string/question_no_1"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:translationZ="3dp"
         tools:ignore="TextViewEdits" />
 
     <TextView
@@ -51,54 +55,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/total_questions"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:padding="10dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option_A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:textColor="@color/color_black_900_alpha_7"
+        android:textColor="@color/white2"
         android:text="@string/option_a"
         android:textSize="16sp"
-        android:background="@drawable/unselected_button"
+        android:textStyle="bold"
+        android:background="@drawable/custom_btn"
         android:elevation="3dp"
         android:stateListAnimator="@null"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option_B"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:textColor="@color/color_black_900_alpha_7"
+        android:textColor="@color/white2"
         android:text="@string/option_b"
+        android:textStyle="bold"
         android:textSize="16sp"
-        android:background="@drawable/unselected_button"
+        android:background="@drawable/custom_btn"
         android:elevation="3dp"
         android:stateListAnimator="@null"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option_C"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:textColor="@color/color_black_900_alpha_7"
+        android:textColor="@color/white2"
         android:text="@string/option_c"
+        android:textStyle="bold"
         android:textSize="16sp"
-        android:background="@drawable/unselected_button"
+        android:background="@drawable/custom_btn"
         android:elevation="3dp"
         android:stateListAnimator="@null"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/option_D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:textColor="@color/color_black_900_alpha_7"
+        android:textColor="@color/white2"
         android:text="@string/option_d"
         android:textSize="16sp"
-        android:background="@drawable/unselected_button"
+        android:textStyle="bold"
+        android:background="@drawable/custom_btn"
         android:elevation="3dp"
         android:stateListAnimator="@null"/>
 
