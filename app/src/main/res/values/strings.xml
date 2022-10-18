@@ -85,6 +85,11 @@
     <string name="_30_00min">30:00min</string>
     <string name="submit">Submit</string>
     <string name="coming_soon">COMING SOON....</string>
-    <string name="total_questions">Total Questions</string>
+    <string name="total_questions">Questions</string>
+    <string name="difficulty_level">Level:</string>
     <string name="back_button">back_button</string>
+    <string name="start">START</string>
+    <string name="choose_difficulty_level">Choose difficulty level</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="high_score">High score:</string>
 </resources>

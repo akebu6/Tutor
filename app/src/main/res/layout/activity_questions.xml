@@ -29,7 +29,8 @@
             android:textColor="@color/blue"
             android:layout_marginStart="100dp"
             android:textStyle="bold"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:freezesText="true"/>
 
         <Button
             style="@style/Widget.AppTheme.Button.OutlinedButton"
@@ -41,7 +42,8 @@
             android:textColor="@color/white2"
             android:textStyle="bold"
             android:layout_alignParentEnd="true"
-            android:backgroundTint="@color/blue" />
+            android:backgroundTint="@color/blue"
+            android:freezesText="true" />
 
     </RelativeLayout>
 
@@ -58,8 +60,9 @@
             android:text="@string/score_0"
             android:textColor="@color/blue"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:padding="10dp"/>
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:freezesText="true"/>
 
         <TextView
             android:id="@+id/total_questions"
@@ -68,9 +71,41 @@
             android:text="@string/total_questions"
             android:textColor="@color/blue"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:layout_marginStart="180dp"
-            android:padding="10dp"/>
+            android:textSize="14sp"
+            android:layout_marginStart="200dp"
+            android:padding="10dp"
+            android:freezesText="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/difficulty_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:freezesText="true"
+            android:padding="10dp"
+            android:layout_marginStart="15dp"
+            android:text="@string/difficulty_level"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_name"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginStart="200dp"
+            android:padding="10dp"
+            android:freezesText="true"/>
 
     </RelativeLayout>
 
@@ -91,7 +126,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:translationZ="3dp"
-        tools:ignore="TextViewEdits" />
+        tools:ignore="TextViewEdits"
+        android:freezesText="true"/>
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -110,7 +146,8 @@
             android:textAlignment="center"
             android:background="@drawable/custom_btn"
             android:elevation="3dp"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:freezesText="true"/>
 
         <RadioButton
             android:id="@+id/option_B"
@@ -124,7 +161,8 @@
             android:textSize="16sp"
             android:background="@drawable/custom_btn"
             android:elevation="3dp"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:freezesText="true"/>
 
         <RadioButton
             android:id="@+id/option_C"
@@ -138,7 +176,8 @@
             android:textSize="16sp"
             android:background="@drawable/custom_btn"
             android:elevation="3dp"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:freezesText="true"/>
 
         <RadioButton
             android:id="@+id/option_D"
@@ -152,7 +191,8 @@
             android:textAlignment="center"
             android:background="@drawable/custom_btn"
             android:elevation="3dp"
-            android:stateListAnimator="@null"/>
+            android:stateListAnimator="@null"
+            android:freezesText="true"/>
 
     </RadioGroup>
 

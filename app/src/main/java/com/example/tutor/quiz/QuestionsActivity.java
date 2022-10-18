@@ -13,24 +13,33 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutor.MainActivity;
 import com.example.tutor.R;
 import com.example.tutor.database.helpers.QuizDbHelper;
+import com.example.tutor.ui.category.CategoryFragment;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 
 public class QuestionsActivity extends AppCompatActivity {
     private static final long TIMER_COUNTDOWN_MILLIS = 50000;
 
+    private static final String KEY_SCORE = "keyScore";
+    private static final String KEY_QUESTION_COUNT = "keyQuestionCount";
+    private static final String KEY_ANSWERED = "keyAnswered";
+    private static final String KEY_SECONDS_LEFT = "keySecondsLeft";
+    private static final String KEY_QUESTION_LIST = "keyQuestionList";
+
+    public static final String EXTRA_HIGH_SCORE = "extraHighScore";
+
     private Button submitButton;
     private RadioButton optionA, optionB, optionC, optionD;
     private RadioGroup radioGroup;
-    private ImageView prevButton;
-    private TextView questions, totalQuestions, timer, quizScore;
+    private TextView questions, totalQuestions, timer, quizScore, levelDifficulty, mCategoryName;
 
     private ColorStateList textColorDefaultButton;
     private ColorStateList textColorDefaultTimer;
@@ -38,7 +47,7 @@ public class QuestionsActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeLeft;
 
-    private List<QuizQuestions> quizQuestionList;
+    private ArrayList<QuizQuestions> quizQuestionList;
     private int questionTotalCounter;
     private QuizQuestions currentQuestion;
     private int questionCounter;
@@ -56,13 +65,43 @@ public class QuestionsActivity extends AppCompatActivity {
         textColorDefaultButton = optionA.getTextColors();
         textColorDefaultTimer = timer.getTextColors();
 
-        QuizDbHelper dbHelper = new QuizDbHelper(this);
-        quizQuestionList = dbHelper.getAllQuestions();
+        Intent intent = getIntent();
+        int categoryID = intent.getIntExtra(CategoryFragment.EXTRA_CATEGORY_ID, 0);
+        String categoryName = intent.getStringExtra(CategoryFragment.EXTRA_CATEGORY_NAME);
+        String difficulty = intent.getStringExtra(CategoryFragment.EXTRA_DIFFICULTY);
 
-        questionTotalCounter = quizQuestionList.size();
-        Collections.shuffle(quizQuestionList);
+        mCategoryName.setText("Category: " + categoryName);
+        levelDifficulty.setText("Level: " + difficulty);
 
-        showNextQuestion();
+        if (savedInstanceState == null) {
+            QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
+            quizQuestionList = dbHelper.getQuestions(categoryID, difficulty);
+
+            questionTotalCounter = quizQuestionList.size();
+            Collections.shuffle(quizQuestionList);
+
+            showNextQuestion();
+        } else {
+            quizQuestionList = savedInstanceState.getParcelableArrayList(KEY_QUESTION_LIST);
+
+            if (quizQuestionList == null) {
+                finish();
+            }
+
+            questionTotalCounter = quizQuestionList.size();
+            questionCounter = savedInstanceState.getInt(KEY_QUESTION_COUNT);
+            currentQuestion = quizQuestionList.get(questionCounter - 1);
+            score = savedInstanceState.getInt(KEY_SCORE);
+            timeLeft = savedInstanceState.getLong(KEY_SECONDS_LEFT);
+            answered = savedInstanceState.getBoolean(KEY_ANSWERED);
+
+            if (!answered) {
+                startCountDownTimer();
+            } else {
+                updateCountDownText();
+                showCorrectAnswer();
+            }
+        }
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +124,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
     public void initializeVariables() {
         submitButton = findViewById(R.id.submit);
-        prevButton = findViewById(R.id.previous_button);
+        ImageView prevButton = findViewById(R.id.previous_button);
         optionA = findViewById(R.id.option_A);
         optionB = findViewById(R.id.option_B);
         optionC = findViewById(R.id.option_C);
@@ -95,6 +134,8 @@ public class QuestionsActivity extends AppCompatActivity {
         timer = findViewById(R.id.timer);
         radioGroup = findViewById(R.id.radioGroup);
         quizScore = findViewById(R.id.quiz_score);
+        levelDifficulty = findViewById(R.id.difficulty_level);
+        mCategoryName = findViewById(R.id.category_name);
 
         prevButton.setOnClickListener(v -> {
             Intent intent = new Intent(QuestionsActivity.this, MainActivity.class);
@@ -221,6 +262,9 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(EXTRA_HIGH_SCORE, score);
+        setResult(RESULT_OK, resultIntent);
         finish();
     }
 
@@ -231,5 +275,16 @@ public class QuestionsActivity extends AppCompatActivity {
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(KEY_SCORE, score);
+        outState.putInt(KEY_QUESTION_COUNT, questionCounter);
+        outState.putLong(KEY_SECONDS_LEFT, timeLeft);
+        outState.putBoolean(KEY_ANSWERED, answered);
+        outState.putParcelableArrayList(KEY_QUESTION_COUNT, quizQuestionList);
     }
 }

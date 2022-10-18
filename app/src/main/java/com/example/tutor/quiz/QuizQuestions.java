@@ -1,12 +1,22 @@
 package com.example.tutor.quiz;
 
-public class QuizQuestions {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class QuizQuestions implements Parcelable {
+    public static final String DIFFICULTY_LEVEL_EASY = "Easy";
+    public static final String DIFFICULTY_LEVEL_MEDIUM = "Medium";
+    public static final String DIFFICULTY_LEVEL_HARD = "Hard";
+
+    private int id;
     private String question;
     private String optionA;
     private String optionB;
     private String optionC;
     private String optionD;
     private int answer;
+    private String difficultyLevel;
+    private int categoryID;
 
     public QuizQuestions() {}
 
@@ -16,7 +26,9 @@ public class QuizQuestions {
             String optionB,
             String optionC,
             String optionD,
-            int answer
+            int answer,
+            String difficultyLevel,
+            int categoryID
     ) {
         this.question = question;
         this.optionA = optionA;
@@ -24,6 +36,58 @@ public class QuizQuestions {
         this.optionC = optionC;
         this.optionD = optionD;
         this.answer = answer;
+        this.difficultyLevel = difficultyLevel;
+        this.categoryID = categoryID;
+    }
+
+    protected QuizQuestions(Parcel in) {
+        id = in.readInt();
+        question = in.readString();
+        optionA = in.readString();
+        optionB = in.readString();
+        optionC = in.readString();
+        optionD = in.readString();
+        answer = in.readInt();
+        difficultyLevel = in.readString();
+        categoryID = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(question);
+        dest.writeString(optionA);
+        dest.writeString(optionB);
+        dest.writeString(optionC);
+        dest.writeString(optionD);
+        dest.writeInt(answer);
+        dest.writeString(difficultyLevel);
+        dest.writeInt(categoryID);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<QuizQuestions> CREATOR = new Creator<QuizQuestions>() {
+        @Override
+        public QuizQuestions createFromParcel(Parcel in) {
+            return new QuizQuestions(in);
+        }
+
+        @Override
+        public QuizQuestions[] newArray(int size) {
+            return new QuizQuestions[size];
+        }
+    };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getQuestion() {
@@ -72,5 +136,29 @@ public class QuizQuestions {
 
     public void setAnswer(int answer) {
         this.answer = answer;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(String difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public static final String[] getAllDifficultyLevels() {
+        return new String[] {
+                DIFFICULTY_LEVEL_EASY,
+                DIFFICULTY_LEVEL_MEDIUM,
+                DIFFICULTY_LEVEL_HARD
+        };
     }
 }

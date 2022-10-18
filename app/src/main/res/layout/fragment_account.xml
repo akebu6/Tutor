@@ -1,28 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tutor.ui.account.AccountFragment">
+    android:background="@drawable/back2"
+    tools:context=".ui.account.AccountFragment">
 
-    <TextView
-        android:id="@+id/coming_soon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:paddingLeft="18sp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:padding="10dp"
-        android:text="@string/coming_soon"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:gravity="center_horizontal"
-        android:textColor="@color/color_black_900_alpha_7"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentLeft="true"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:paddingRight="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentRight="true"/>
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="2dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="370dp"
+            android:layout_height="260dp"
+            android:outlineAmbientShadowColor="@color/color_black_900_alpha_7"
+            android:outlineSpotShadowColor="@color/color_black_900_alpha_7"
+            app:cardCornerRadius="19sp">
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="161dp"
+                android:layout_marginTop="45sp"
+                android:src="@drawable/circle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:gravity="center"
+                android:text="Akebu Simasiku"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:gravity="center"
+                android:text="Grade - 9"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="180sp"
+                android:layout_marginEnd="20dp"
+                android:background="#f1f1f1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="195dp"
+                android:gravity="center"
+                android:text="Put whatver makes sense to you" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="220dp"
+                android:gravity="center"
+                android:text="Here too aii boi" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_below="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="380dp"
+            android:layout_height="110dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="0dp"
+            android:outlineSpotShadowColor="@color/color_black_900_alpha_7"
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18sp"
+                android:paddingStart="23dp"
+                android:src="@drawable/ic_baseline_phone_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="19dp"
+                android:text="+260 97 3817086"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/ic_baseline_email_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="60dp"
+                android:text="akebs@gmail.com"
+                android:textColor="@color/blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative2"
+        android:layout_below="@+id/relative1"
+        >
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOG OUT"
+            android:backgroundTint="@color/blue"
+            android:layout_centerInParent="true"
+            android:outlineSpotShadowColor="@color/color_black_900_alpha_7"/>
+    </RelativeLayout>
+
+</RelativeLayout>

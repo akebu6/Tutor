@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.example.tutor.R;
 
 public class AccountFragment extends Fragment {
-    private TextView mTextView;
 
     public AccountFragment() { }
 
@@ -28,7 +27,6 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
-        mTextView = view.findViewById(R.id.coming_soon);
 
         return view;
     }
