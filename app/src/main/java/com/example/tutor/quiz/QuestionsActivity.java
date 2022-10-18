@@ -1,28 +1,50 @@
 package com.example.tutor.quiz;
 
-import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tutor.MainActivity;
 import com.example.tutor.R;
+import com.example.tutor.database.helpers.QuizDbHelper;
 
-public class QuestionsActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button submitButton, optionA, optionB, optionC, optionD;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
+public class QuestionsActivity extends AppCompatActivity {
+    private static final long TIMER_COUNTDOWN_MILLIS = 50000;
+
+    private Button submitButton;
+    private RadioButton optionA, optionB, optionC, optionD;
+    private RadioGroup radioGroup;
     private ImageView prevButton;
-    private TextView questions, totalQuestions;
+    private TextView questions, totalQuestions, timer, quizScore;
 
-    private int score = 0;
-    private int currentQuestion = Questions.questions.length;
-    private int questionIndex = 0;
-    private String selectedOption = "";
+    private ColorStateList textColorDefaultButton;
+    private ColorStateList textColorDefaultTimer;
+
+    private CountDownTimer countDownTimer;
+    private long timeLeft;
+
+    private List<QuizQuestions> quizQuestionList;
+    private int questionTotalCounter;
+    private QuizQuestions currentQuestion;
+    private int questionCounter;
+
+    private int score;
+    private boolean answered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,43 +52,35 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_questions);
 
         initializeVariables();
-        loadNewQuestions();
 
-    }
+        textColorDefaultButton = optionA.getTextColors();
+        textColorDefaultTimer = timer.getTextColors();
 
-    public void loadNewQuestions() {
-        if (questionIndex == currentQuestion) {
-            finishQuiz();
-            return;
-        }
+        QuizDbHelper dbHelper = new QuizDbHelper(this);
+        quizQuestionList = dbHelper.getAllQuestions();
 
-        questions.setText(Questions.questions[questionIndex]);
-        optionA.setText(Questions.choices[questionIndex][0]);
-        optionB.setText(Questions.choices[questionIndex][1]);
-        optionC.setText(Questions.choices[questionIndex][2]);
-        optionD.setText(Questions.choices[questionIndex][3]);
-    }
+        questionTotalCounter = quizQuestionList.size();
+        Collections.shuffle(quizQuestionList);
 
-    public void finishQuiz() {
-        String quizStatus;
-        if (score >= currentQuestion * 0.60) {
-            quizStatus = "Excellent";
-        } else {
-            quizStatus = "Try Again!";
-        }
+        showNextQuestion();
 
-        new AlertDialog.Builder(this)
-                .setTitle(quizStatus)
-                .setMessage("Your Score: " + score + " out of " + currentQuestion)
-                .setPositiveButton("Restart", (dialogInterface, i) -> restart())
-                .setCancelable(false)
-                .show();
-    }
-
-    public void restart() {
-        score = 0;
-        questionIndex = 0;
-        loadNewQuestions();
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!answered) {
+                    if (optionA.isChecked() || optionB.isChecked() ||
+                            optionC.isChecked() || optionD.isChecked()
+                    ) {
+                        checkAnswer();
+                    } else {
+                        Toast.makeText(QuestionsActivity.this, "Please select an answer",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                   showNextQuestion();
+                }
+            }
+        });
     }
 
     public void initializeVariables() {
@@ -78,40 +92,144 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         optionD = findViewById(R.id.option_D);
         questions = findViewById(R.id.question);
         totalQuestions = findViewById(R.id.total_questions);
+        timer = findViewById(R.id.timer);
+        radioGroup = findViewById(R.id.radioGroup);
+        quizScore = findViewById(R.id.quiz_score);
 
         prevButton.setOnClickListener(v -> {
             Intent intent = new Intent(QuestionsActivity.this, MainActivity.class);
             startActivity(intent);
         });
+    }
 
-        submitButton.setOnClickListener(this);
-        optionA.setOnClickListener(this);
-        optionB.setOnClickListener(this);
-        optionC.setOnClickListener(this);
-        optionD.setOnClickListener(this);
+    private void showNextQuestion() {
+        optionA.setTextColor(textColorDefaultButton);
+        optionB.setTextColor(textColorDefaultButton);
+        optionC.setTextColor(textColorDefaultButton);
+        optionD.setTextColor(textColorDefaultButton);
+        radioGroup.clearCheck();
 
-        totalQuestions.setText("Total Questions: " + currentQuestion);
+        if (questionCounter < questionTotalCounter) {
+            currentQuestion = quizQuestionList.get(questionCounter);
+            questions.setText(currentQuestion.getQuestion());
+            optionA.setText(currentQuestion.getOptionA());
+            optionB.setText(currentQuestion.getOptionB());
+            optionC.setText(currentQuestion.getOptionC());
+            optionD.setText(currentQuestion.getOptionD());
+
+            questionCounter++;
+            totalQuestions.setText("Question: " + questionCounter + "/" + questionTotalCounter);
+            answered = false;
+            submitButton.setText("Confirm");
+
+            timeLeft = TIMER_COUNTDOWN_MILLIS;
+            startCountDownTimer();
+
+        } else {
+            finishQuiz();
+        }
+    }
+
+    private void checkAnswer() {
+        answered = true;
+
+        countDownTimer.cancel();
+
+        RadioButton radioButtonSelected = findViewById(radioGroup.getCheckedRadioButtonId());
+        int answer = radioGroup.indexOfChild(radioButtonSelected) + 1;
+
+        if (answer == currentQuestion.getAnswer()) {
+            score++;
+            quizScore.setText("Score: " + score);
+        }
+
+        showCorrectAnswer();
 
     }
 
-    public void onClick(View view) {
-        optionA.setBackgroundColor(Color.BLUE);
-        optionB.setBackgroundColor(Color.BLUE);
-        optionC.setBackgroundColor(Color.BLUE);
-        optionD.setBackgroundColor(Color.BLUE);
+    private void showCorrectAnswer() {
+        optionA.setTextColor(Color.RED);
+        optionB.setTextColor(Color.RED);
+        optionC.setTextColor(Color.RED);
+        optionD.setTextColor(Color.RED);
 
-        Button clickedButton = (Button) view;
+        switch (currentQuestion.getAnswer()) {
+            case 1:
+                optionA.setTextColor(Color.GREEN);
+                questions.setText("A is correct");
+                break;
+            case 2:
+                optionB.setTextColor(Color.GREEN);
+                questions.setText("B is correct");
+                break;
+            case 3:
+                optionC.setTextColor(Color.GREEN);
+                questions.setText("C is correct");
+                break;
+            case 4:
+                optionD.setTextColor(Color.GREEN);
+                questions.setText("D is correct");
+                break;
+        }
 
-        if (clickedButton.getId() == R.id.submit) {
-            if (selectedOption.equals(Questions.correctAnswers[questionIndex])) {
-                score++;
-            }
-            questionIndex++;
-            loadNewQuestions();
-
+        if (questionCounter < questionTotalCounter) {
+            submitButton.setText("Next");
         } else {
-            selectedOption = clickedButton.getText().toString();
-            clickedButton.setBackgroundResource(R.color.green);
+            submitButton.setText("Submit");
+            submitButton.setOnClickListener(v -> {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            });
+        }
+    }
+
+    private void startCountDownTimer() {
+        countDownTimer = new CountDownTimer(timeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeft = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                timeLeft = 0;
+                updateCountDownText();
+                checkAnswer();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (timeLeft / 1000) / 60;
+        int seconds = (int) (timeLeft / 1000) % 60;
+
+        String timeFormatted = String.format(
+                Locale.getDefault(),
+                "%02d:%02d",
+                minutes,
+                seconds
+        );
+
+        timer.setText(timeFormatted);
+
+        if (timeLeft < 10000) {
+            timer.setTextColor(Color.RED);
+        } else {
+            timer.setTextColor(textColorDefaultTimer);
+        }
+    }
+
+    private void finishQuiz() {
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
         }
     }
 }
