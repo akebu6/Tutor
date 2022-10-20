@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/white2"
     tools:context="com.example.tutor.ui.category.CategoryFragment">
 
     <ImageView
@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+        app:layout_constraintVertical_bias="0.144" />
 
     <TextView
         android:id="@+id/start_text"
@@ -27,7 +27,7 @@
         android:text="@string/start"
         android:textStyle="bold"
         android:textSize="40sp"
-        android:textColor="@color/blue"
+        android:textColor="@color/white2"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/start_image"
         app:layout_constraintEnd_toEndOf="@+id/start_image"
@@ -36,26 +36,28 @@
 
     <Spinner
         android:id="@+id/spinner_category"
-        android:layout_width="200dp"
+        android:layout_width="232dp"
         android:layout_height="51dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_spinner"
         android:contentDescription="@string/choose_category"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="462dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:dropDownVerticalOffset="51dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_image"/>
+        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_image" />
 
     <Spinner
         android:id="@+id/spinner_difficulty"
-        android:layout_width="200dp"
+        android:layout_width="232dp"
         android:layout_height="51dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="20dp"
+        android:dropDownVerticalOffset="51dp"
+        android:background="@drawable/bg_spinner"
         android:contentDescription="@string/choose_difficulty_level"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="535dp"
-        app:layout_constraintTop_toBottomOf="@id/spinner_category"/>
+        app:layout_constraintTop_toBottomOf="@id/spinner_category" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
