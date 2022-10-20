@@ -7,21 +7,6 @@
     android:background="@color/blue"
     tools:context="com.example.tutor.ui.category.CategoryFragment">
 
-    <TextView
-        android:id="@+id/high_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="@string/high_score"
-        android:textColor="#263238"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/start_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/start_image"
         android:layout_width="wrap_content"
@@ -32,8 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/high_score"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
 
     <TextView
         android:id="@+id/start_text"

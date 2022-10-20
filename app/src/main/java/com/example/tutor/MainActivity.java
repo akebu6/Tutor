@@ -1,5 +1,7 @@
 package com.example.tutor;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -16,6 +18,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.example.tutor.databinding.ActivityMainBinding;
 import com.example.tutor.ui.account.AccountFragment;
 import com.example.tutor.ui.category.CategoryFragment;
+import com.example.tutor.ui.community.AboutUsActivity;
+import com.example.tutor.ui.howToPlay.HowToPlayActivity;
 import com.example.tutor.ui.scoreboard.ScoreBoardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -66,16 +70,16 @@ public class MainActivity extends AppCompatActivity
         setUpNavLogic();
     }
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_feedback) {
+        if (id == R.id.nav_how_to_play) {
+            Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_about) {
-
+            Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
+            startActivity(intent);
         }
         return false;
     }
@@ -90,41 +94,39 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void setUpNavLogic() {
         AccountFragment accountFragment = new AccountFragment();
         ScoreBoardFragment scoreBoardFragment = new ScoreBoardFragment();
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.main_frame, categoryFragment)
-                                .commit();
-                        Toast.makeText(MainActivity.this, "Nav Fragment", Toast.LENGTH_SHORT).show();
-                        return true;
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_frame, categoryFragment)
+                            .commit();
+                    Toast.makeText(MainActivity.this, "Nav Fragment", Toast.LENGTH_SHORT).show();
+                    return true;
 
-                    case R.id.nav_score_board:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.main_frame, scoreBoardFragment)
-                                .commit();
-                        Toast.makeText(MainActivity.this, "Score Fragment", Toast.LENGTH_SHORT).show();
-                        return true;
+                case R.id.nav_score_board:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_frame, scoreBoardFragment)
+                            .commit();
+                    Toast.makeText(MainActivity.this, "Score Fragment", Toast.LENGTH_SHORT).show();
+                    return true;
 
-                    case R.id.my_account:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.main_frame, accountFragment)
-                                .commit();
-                        Toast.makeText(MainActivity.this, "Account Fragment", Toast.LENGTH_SHORT).show();
-                        return true;
-                }
-                return false;
+                case R.id.my_account:
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_frame, accountFragment)
+                            .commit();
+                    Toast.makeText(MainActivity.this, "Account Fragment", Toast.LENGTH_SHORT).show();
+                    return true;
             }
+            return false;
         });
     }
 }

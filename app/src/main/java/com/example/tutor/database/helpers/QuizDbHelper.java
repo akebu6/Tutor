@@ -118,34 +118,81 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        QuizQuestions quizQuestionOne = new QuizQuestions("Math, Easy: A is correct",
-                "A", "B", "C", "D", 1,
+        // science questions
+        QuizQuestions scienceQuizQ1Easy = new QuizQuestions("Which of the following " +
+                "diseases is transmitted mainly through sexual intercourse?",
+                "Malaria", "Syphilis", "Typhoid", "Scabies", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_EASY, Category.SCIENCE);
+        addQuestions(scienceQuizQ1Easy);
+        QuizQuestions scienceQuizQ2Easy = new QuizQuestions("Which one of the following " +
+                "changes is only associated with puberty in females?",
+                "Breasts grow", "Voice becomes deeper",
+                "Hair grows in the armpits", "Start having wet dreams", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_EASY, Category.SCIENCE);
+        addQuestions(scienceQuizQ2Easy);
+        QuizQuestions scienceQuizQ3Easy = new QuizQuestions( "The law that states that mass " +
+                "is a substance before a chemical reaction is equal to the total mass of the " +
+                "substances that are produced is called the law of .... ",
+                "conservation of energy", "conservation of matter",
+                "conversion of matter", "conversion of energy", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_EASY, Category.SCIENCE);
+        addQuestions(scienceQuizQ3Easy);
+
+        // science hard questions
+        QuizQuestions scienceQuizQ4Hard = new QuizQuestions("The term \"Geotropism\" refers" +
+                " to the movement of a part of a plant in response to what?",
+                "chemicals", "gravity", "light", "water", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_HARD, Category.SCIENCE);
+        addQuestions(scienceQuizQ4Hard);
+
+        // math questions
+        QuizQuestions mathQuizQ1Easy = new QuizQuestions("What is 357 861 correct to 3 significant figure?",
+                "360 000", "350 000", "358 000", "357 000", 4,
                 QuizQuestions.DIFFICULTY_LEVEL_EASY, Category.MATH);
-        addQuestions(quizQuestionOne);
-        QuizQuestions quizQuestionTwo = new QuizQuestions("Science, Medium: B is correct",
-                "A", "B", "C", "D", 2,
-                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.SCIENCE);
-        addQuestions(quizQuestionTwo);
-        QuizQuestions quizQuestionThree = new QuizQuestions("English, Hard: C is correct",
-                "A", "B", "C", "D", 3,
-                QuizQuestions.DIFFICULTY_LEVEL_HARD, Category.ENGLISH);
-        addQuestions(quizQuestionThree);
-        QuizQuestions quizQuestionFour = new QuizQuestions("Computer Studies, Hard: D is correct",
-                "A", "B", "C", "D", 4,
-                QuizQuestions.DIFFICULTY_LEVEL_HARD, Category.COMPUTER_STUDIES);
-        addQuestions(quizQuestionFour);
-        QuizQuestions quizQuestionFive = new QuizQuestions("Religious Ed, Easy: D is correct",
-                "A", "B", "C", "D", 4,
-                QuizQuestions.DIFFICULTY_LEVEL_EASY, Category.RELIGIOUS_EDUCATION);
-        addQuestions(quizQuestionFive);
-        QuizQuestions quizQuestionSix = new QuizQuestions("Business Studies, Medium: D is correct",
-                "A", "B", "C", "D", 4,
-                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.BUSINESS_STUDIES);
-        addQuestions(quizQuestionSix);
-        QuizQuestions quizQuestionSeven = new QuizQuestions("Social Studies, Hard: D is correct",
-                "A", "B", "C", "D", 4,
-                QuizQuestions.DIFFICULTY_LEVEL_HARD, Category.SOCIAL_STUDIES);
-        addQuestions(quizQuestionSeven);
+        addQuestions(mathQuizQ1Easy);
+        QuizQuestions mathQuizQ2Easy = new QuizQuestions("What is the longest side of a right angled triangle?",
+                "Hypotenuse", "Adjacent", "Base", "Radius", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_EASY, Category.MATH);
+        addQuestions(mathQuizQ2Easy);
+
+        // math medium questions
+        QuizQuestions mathQuizQ3Medium = new QuizQuestions("Find the missing terms in multiple of 3: 3, 6, 9, __, 15",
+                "2", "6", "9", "12", 4,
+                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.MATH);
+        addQuestions(mathQuizQ3Medium);
+        QuizQuestions mathQuizQ4Medium = new QuizQuestions("What is the square root of 81?",
+                "10", "9", "8", "1", 2,
+                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.MATH);
+        addQuestions(mathQuizQ4Medium);
+
+        // math hard questions
+        QuizQuestions mathQuizQ5Hard = new QuizQuestions("50 times of 8 is equal to:",
+                "800", "400", "40", "4", 2,
+                QuizQuestions.DIFFICULTY_LEVEL_HARD, Category.MATH);
+        addQuestions(mathQuizQ5Hard);
+
+        // english medium questions
+        QuizQuestions englishQuizQ1Medium = new QuizQuestions("Your cousin tells you that " +
+                "she has failed the Grade 12 examinations. What would you say?",
+                "I am sorry to hear that.", "Is that so? Condolences.",
+                "Maybe you did not study hard enough.", "That is very regrettable.", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.ENGLISH);
+        addQuestions(englishQuizQ1Medium);
+        QuizQuestions englishQuizQ2Medium = new QuizQuestions( "You accidentally knock a " +
+                "cup of coffee from your friend's hand. What do you say?",
+                "Are you all right?", "I am sorry.", "Take care.", "Watch out!", 1,
+                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.ENGLISH);
+        addQuestions(englishQuizQ2Medium);
+        QuizQuestions englishQuizQ3Medium = new QuizQuestions( "Your friend asks for a pen " +
+                "from you and it is not the first time. She is in the habit of losing pens. What would you say? Why do you ...",
+                "always lose pen", "always lose pens", "lose pens", "lose a pen", 2,
+                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.ENGLISH);
+        addQuestions(englishQuizQ3Medium);
+        QuizQuestions englishQuizQ4Medium = new QuizQuestions("You cannot run the 2 800 " +
+                "metres race. What would you say? Sir, I .... run the 2 800 metres race.",
+                "am able not to", "am cannot", "am not able to", "cannot be able to", 3,
+                QuizQuestions.DIFFICULTY_LEVEL_MEDIUM, Category.ENGLISH);
+        addQuestions(englishQuizQ4Medium);
     }
 
     private void addQuestions(QuizQuestions questions) {

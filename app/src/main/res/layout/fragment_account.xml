@@ -7,22 +7,6 @@
     android:background="@drawable/back2"
     tools:context=".ui.account.AccountFragment">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_baseline_arrow_back_24"
-        android:paddingLeft="18sp"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentLeft="true"/>
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_baseline_edit_24"
-        android:paddingRight="18sp"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentRight="true"/>
-
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
@@ -37,22 +21,24 @@
             android:layout_height="260dp"
             android:outlineAmbientShadowColor="@color/color_black_900_alpha_7"
             android:outlineSpotShadowColor="@color/color_black_900_alpha_7"
-            app:cardCornerRadius="19sp">
+            app:cardCornerRadius="19sp"
+            tools:targetApi="p">
 
             <ImageView
                 android:id="@+id/image1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="161dp"
+                android:layout_marginStart="161dp"
                 android:layout_marginTop="45sp"
-                android:src="@drawable/circle" />
+                android:src="@drawable/circle"
+                android:contentDescription="@string/photo" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="120dp"
                 android:gravity="center"
-                android:text="Akebu Simasiku"
+                android:text="@string/android_studio"
                 android:textColor="@color/blue"
                 android:textStyle="bold" />
 
@@ -61,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="140dp"
                 android:gravity="center"
-                android:text="Grade - 9"
+                android:text="@string/grade_9"
                 android:textColor="@color/blue"
                 android:textStyle="bold" />
 
@@ -71,21 +57,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="180sp"
                 android:layout_marginEnd="20dp"
-                android:background="#f1f1f1" />
+                android:background="#f1f1f1"
+                tools:ignore="SmallSp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="195dp"
-                android:gravity="center"
-                android:text="Put whatver makes sense to you" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="220dp"
-                android:gravity="center"
-                android:text="Here too aii boi" />
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
@@ -103,21 +77,24 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
             android:outlineSpotShadowColor="@color/color_black_900_alpha_7"
-            app:cardCornerRadius="16dp">
+            app:cardCornerRadius="16dp"
+            tools:ignore="UnusedAttribute">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18sp"
                 android:paddingStart="23dp"
-                android:src="@drawable/ic_baseline_phone_24" />
+                android:src="@drawable/ic_baseline_phone_24"
+                tools:ignore="RtlSymmetry"
+                android:contentDescription="@string/email_us" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="19dp"
-                android:text="+260 97 3817086"
+                android:text="@string/phone"
                 android:textColor="@color/blue"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -127,14 +104,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="60dp"
-                android:src="@drawable/ic_baseline_email_24" />
+                android:src="@drawable/ic_baseline_email_24"
+                android:contentDescription="@string/email_us" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="60dp"
-                android:text="akebs@gmail.com"
+                android:text="@string/nav_header_subtitle"
                 android:textColor="@color/blue"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -154,10 +132,11 @@
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOG OUT"
+            android:text="@string/logout"
             android:backgroundTint="@color/blue"
             android:layout_centerInParent="true"
-            android:outlineSpotShadowColor="@color/color_black_900_alpha_7"/>
+            android:outlineSpotShadowColor="@color/color_black_900_alpha_7"
+            tools:ignore="UnusedAttribute" />
     </RelativeLayout>
 
 </RelativeLayout>

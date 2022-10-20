@@ -92,4 +92,19 @@
     <string name="choose_difficulty_level">Choose difficulty level</string>
     <string name="choose_category">Choose Category</string>
     <string name="high_score">High score:</string>
+    <string name="send_us_feedback">Send us your feedback</string>
+    <string name="version">Version 1.0</string>
+    <string name="all_rights_reserved">All Rights Reserved</string>
+    <string name="managed_by">Designed and Developed by Year 3 BSE Students</string>
+    <string name="about_the_app">About the App</string>
+    <string name="app_overview">Tutor is a Quiz app designed to help Grade 9 Pupils to Practice for their Exams whilst having fun in the process</string>
+    <string name="email_us">email us</string>
+    <string name="phone">XXXXXXXXXXXX</string>
+    <string name="logout">Log out</string>
+    <string name="photo">photo</string>
+    <string name="instruction_one">1. Pick the subject and difficulty level of your choice</string>
+    <string name="instruction_two">2. The quiz automatically begins when your press the start button which automatically starts the timer</string>
+    <string name="instruction_three">3. Read the question carefully then select an answer from the list provided. Once selected, confirm your answer and then submit it, this takes you to the next question in that subject.</string>
+    <string name="instruction_four">4. Keep answering the questions and observing your score. Try your best to answer the questions in the allocated time</string>
+    <string name="instruction_five">5. Have fun and learn!!!</string>
 </resources>

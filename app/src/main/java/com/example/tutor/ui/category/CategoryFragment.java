@@ -1,7 +1,6 @@
 package com.example.tutor.ui.category;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tutor.R;
@@ -53,11 +51,10 @@ public class CategoryFragment extends Fragment {
         startButton = view.findViewById(R.id.start_image);
         spinnerDifficultyLevel = view.findViewById(R.id.spinner_difficulty);
         spinnerCategoryName = view.findViewById(R.id.spinner_category);
-        textViewHighScore = view.findViewById(R.id.high_score);
+//        textViewHighScore = view.findViewById(R.id.high_score);
 
         loadCategories();
         loadDifficultyLevel();
-        loadHighScore();
 
         startButton.setOnClickListener(v -> startQuiz());
 
@@ -76,20 +73,6 @@ public class CategoryFragment extends Fragment {
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == REQUEST_CODE_QUIZ) {
-            if (resultCode == getActivity().RESULT_OK) {
-                int score = data.getIntExtra(QuestionsActivity.EXTRA_HIGH_SCORE, 0);
-                if (score > highscore) {
-                    updateHighScore(score);
-                }
-            }
-        }
     }
 
     private void loadCategories() {
@@ -111,21 +94,39 @@ public class CategoryFragment extends Fragment {
         spinnerDifficultyLevel.setAdapter(adapter);
     }
 
-    private void loadHighScore() {
-        SharedPreferences prefs = getActivity()
-                .getSharedPreferences(SHARED_PREFS, getActivity().MODE_PRIVATE);
-        highscore = prefs.getInt(KEY_HIGHSCORE, 0);
-        textViewHighScore.setText("Highscore: " + highscore);
-    }
-
-    private void updateHighScore(int newHighScore) {
-        highscore = newHighScore;
-        textViewHighScore.setText("Highscore: " + highscore);
-
-        SharedPreferences prefs = getActivity()
-                .getSharedPreferences(SHARED_PREFS, getActivity().MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(KEY_HIGHSCORE, highscore);
-        editor.apply();
-    }
+    /**
+     * The following functions will be implemented at a later stage
+     *
+     *  @Override
+     *     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+     *         super.onActivityResult(requestCode, resultCode, data);
+     *
+     *         if (requestCode == REQUEST_CODE_QUIZ) {
+     *             if (resultCode == getActivity().RESULT_OK) {
+     *                 int score = data.getIntExtra(QuestionsActivity.EXTRA_HIGH_SCORE, 0);
+     *                 if (score > highscore) {
+     *                     updateHighScore(score);
+     *                 }
+     *             }
+     *         }
+     *     }
+     *
+     *     private void loadHighScore() {
+     *         SharedPreferences prefs = getActivity()
+     *                 .getSharedPreferences(SHARED_PREFS, getActivity().MODE_PRIVATE);
+     *         highscore = prefs.getInt(KEY_HIGHSCORE, 0);
+     *         textViewHighScore.setText("Highscore: " + highscore);
+     *     }
+     *
+     *     private void updateHighScore(int newHighScore) {
+     *         highscore = newHighScore;
+     *         textViewHighScore.setText("Highscore: " + highscore);
+     *
+     *         SharedPreferences prefs = getActivity()
+     *                 .getSharedPreferences(SHARED_PREFS, getActivity().MODE_PRIVATE);
+     *         SharedPreferences.Editor editor = prefs.edit();
+     *         editor.putInt(KEY_HIGHSCORE, highscore);
+     *         editor.apply();
+     *     }
+     * ***/
 }
