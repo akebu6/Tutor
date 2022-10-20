@@ -15,7 +15,7 @@
         android:src="@drawable/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.144" />
@@ -43,7 +43,7 @@
         android:contentDescription="@string/choose_category"
         android:dropDownVerticalOffset="51dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/start_image" />
 
@@ -52,11 +52,11 @@
         android:layout_width="232dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
-        android:dropDownVerticalOffset="51dp"
         android:background="@drawable/bg_spinner"
         android:contentDescription="@string/choose_difficulty_level"
+        android:dropDownVerticalOffset="51dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner_category" />
 

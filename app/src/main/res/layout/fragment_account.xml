@@ -132,10 +132,10 @@
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/logout"
-            android:backgroundTint="@color/blue"
             android:layout_centerInParent="true"
+            android:backgroundTint="@color/blue"
             android:outlineSpotShadowColor="@color/color_black_900_alpha_7"
+            android:text="@string/logout"
             tools:ignore="UnusedAttribute" />
     </RelativeLayout>
 
