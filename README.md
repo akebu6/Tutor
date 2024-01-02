@@ -15,7 +15,7 @@ A quiz app to help grade 9 students prepare for their mock and final exams
 
 
 #### NOTE
-- If, however, the user allows the timer to finish without having selected an answer, then no score is record.
+- If, however, the user allows the timer to finish without having selected an answer, then no score is recorded.
 - If, however, an answer was selected and it is correct, then their score is updated.
 
 
