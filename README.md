@@ -26,22 +26,16 @@ A quiz app to help grade 9 students prepare for their mock and final exams
 
 
 ## Modules
-1. **SplashScreen**
-The first screen shows the user the app logo before it then leads them to the login screen.
-2. **Login**
-The user can login if they already have an account. This is to allow the user's data be saved so they can continue where they ended.
+1. **SplashScreen**: The first screen shows the user the app logo before it then leads them to the login screen.
+2. **Login**: The user can login if they already have an account. This is to allow the user's data be saved so they can continue where they ended.
 3. **Signup**
 If the user doesn't have an account, then they can signup for one.
-4. **HomeScreen**
-Shows the home screen with the **start** button right at the centre with 2 spinners below it for selecting the subject and difficulty level.
-5. **Questions**
-The user can now start playing the quiz and answering the questions.
-6. **Scoreboard** (coming soon...)
-7. **Account** (functionality coming soon...)
-8. **How to play**
-A brief overview of how the user can use the app to play the quiz.
-9. **About us**
-Brief description of what the app is, the version as well as some information about the developers.
+4. **HomeScreen**: Shows the home screen with the **start** button right at the centre with 2 spinners below it for selecting the subject and difficulty level.
+5. **Questions**: The user can now start playing the quiz and answering the questions.
+6. **Scoreboard**: (coming soon...)
+7. **Account**: (functionality coming soon...)
+8. **How to play**: A brief overview of how the user can use the app to play the quiz.
+9. **About us**: Brief description of what the app is, the version as well as some information about the developers.
 
 
 ## Current App Limitations
