@@ -45,3 +45,5 @@ The following are some of the limitations that the app has as most of the functi
 3. The user cannot make any modifications to their account information as everything is hard-coded.
 4. The logged in user's profile is not yet implemented.
 5. The high score of each subject has not been fully integrated into the current working system.
+
+## Future Plans
