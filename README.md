@@ -47,3 +47,7 @@ The following are some of the limitations that the app has as most of the functi
 5. The high score of each subject has not been fully integrated into the current working system.
 
 ## Future Plans
+- Add more questions in the subjects that have already been added
+- Add questions to the subjects that don't have any questions
+- Implement the account functionality
+- Update the UI
