@@ -51,6 +51,9 @@ The following are some of the limitations that the app has as most of the functi
 - Add questions to the subjects that don't have any questions
 - Implement the account functionality
 - Update the UI
+- Allow users to be able to add their own questions
+- Implement the scoreboard
+- Implement muiltiple player mode
 
 ## How to Contribute
 In order to start contributing to this repository, kindly read the **Contributing Guidelines** [here](https://github.com/akebu6/Tutor/blob/main/.github/CONTRIBUTING.md)
