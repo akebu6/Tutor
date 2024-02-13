@@ -3,7 +3,7 @@ A quiz app to help grade 9 students prepare for their mock and final exams
 
 ### Overview of the App
 
-## App Features
+# App Features
 1. Allows the user to signup for a free account or login to an already existing account.
 2. The user gets to choose which subject that they would like to take the quiz in, as well as choose the difficulty level.
 3. After the selection is made, the user can start the quiz by clicking the start button.
@@ -13,17 +13,14 @@ A quiz app to help grade 9 students prepare for their mock and final exams
 7. If, however, the answer selected is wrong, then the system will show the user the correct answer.
 8. The user can also keep a track of their score as they are answering the questions.
 
-
 #### NOTE
 - If, however, the user allows the timer to finish without having selected an answer, then no score is recorded.
 - If, however, an answer was selected and it is correct, then their score is updated.
 
-
-## Technology Used
+# Technology Used
 1. **Firebase**: for user authentication.
 2. **SQLite**: for the database that contains the questions, categories and answers.
 3. **Java**: for the actual implementation of the application.
-
 
 ## Modules
 1. **SplashScreen**: The first screen shows the user the app logo before it then leads them to the login screen.
@@ -37,8 +34,7 @@ If the user doesn't have an account, then they can signup for one.
 8. **How to play**: A brief overview of how the user can use the app to play the quiz.
 9. **About us**: Brief description of what the app is, the version as well as some information about the developers.
 
-
-## Current App Limitations
+# Current App Limitations
 The following are some of the limitations that the app has as most of the functionality is still under construction:
 1. Only a few questions and answers have been added in the following subjects: English, Math and Science.
 2. The user cannot yet compete with their friends.
@@ -46,7 +42,7 @@ The following are some of the limitations that the app has as most of the functi
 4. The logged in user's profile is not yet implemented.
 5. The high score of each subject has not been fully integrated into the current working system.
 
-## Future Plans
+# Future Plans
 - Add more questions in the subjects that have already been added
 - Add questions to the subjects that don't have any questions
 - Implement the account functionality
@@ -54,6 +50,14 @@ The following are some of the limitations that the app has as most of the functi
 - Allow users to be able to add their own questions
 - Implement the scoreboard
 - Implement muiltiple player mode
+
+# Learnings
+
+# Process
+
+# How to run the Project
+
+# Images
 
 ## How to Contribute
 In order to start contributing to this repository, kindly read the **Contributing Guidelines** [here](https://github.com/akebu6/Tutor/blob/main/.github/CONTRIBUTING.md)
